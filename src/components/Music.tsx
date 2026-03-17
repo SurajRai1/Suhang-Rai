@@ -23,10 +23,10 @@ export function Music() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-zinc-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed italic"
+            className="text-zinc-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed border-l-4 border-fuchsia-500/50 pl-6 text-left italic bg-zinc-900/30 p-6 rounded-r-2xl"
           >
-            &quot;This song was written back when I had my first break up. I had the lyrics all along but never the instruments or professional gadgets to bring it to life.<br/><br/>
-            With the melody stuck in my head, I finally produced it—a song dedicated to myself about unconditional love. Oh, and it&apos;s a song I wrote for Selena Gomez.&quot;
+            &quot;I wrote the lyrics years ago during my first major heartbreak, but I never had the gear or the skills to actually produce it. The melody just lived in my head playing on a loop.<br/><br/>
+            Eventually, I stopped waiting for the perfect setup. I used whatever tools I had to bring it to life. It started as a song for someone else, but it ended up being an anthem for my own unconditional self-love.&quot;
           </motion.p>
         </div>
 

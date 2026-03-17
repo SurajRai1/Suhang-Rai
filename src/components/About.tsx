@@ -50,11 +50,11 @@ export function About() {
                   <div className="bg-blue-500/20 p-3 rounded-lg text-blue-400">
                     <Code2 size={24} />
                   </div>
-                  <Badge variant="outline" className="border-zinc-700 text-zinc-300">CS Student</Badge>
+                  <Badge variant="outline" className="border-zinc-700 text-zinc-300">AI Synthesizer</Badge>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-2 text-white">Full-Stack Engineering</h3>
-                  <p className="text-zinc-400">Building scalable systems, architecting databases, and writing clean, efficient code. From algorithms to APIs.</p>
+                  <h3 className="text-2xl font-bold mb-2 text-white">AI-Driven Creation</h3>
+                  <p className="text-zinc-400">Why write boilerplate when you can prompt architecture? I use AI to rapidly prototype, build, and deploy full-stack applications at the speed of thought.</p>
                 </div>
               </CardContent>
             </Card>

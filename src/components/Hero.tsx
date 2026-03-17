@@ -8,9 +8,9 @@ import { ArrowDown, Code, Music, Palette, Terminal, Zap, Flame } from "lucide-re
 const roles = [
   "Musician",
   "Product Enthusiast",
-  "Developer",
+  "AI Synthesizer",
   "Artist",
-  "CS Student",
+  "Digital Creator",
   "Jack of All Trades"
 ];
 
@@ -118,7 +118,7 @@ export function Hero() {
           className="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed"
           animate={chaosMode ? { fontStyle: "italic", color: "#f87171" } : {}}
         >
-          Curiosity is my main thing. I love building things—whether it&apos;s music, websites, or apps. Often told I&apos;m a master of none, but frequently proving I&apos;m better than one.
+          I don&apos;t just write code—I direct AI to build my wildest ideas at the speed of thought. Combining music, design, and brutal efficiency to create things that shouldn&apos;t exist yet. Often told I&apos;m a master of none, but constantly proving I&apos;m better than one.
         </motion.p>
 
         <motion.div 
