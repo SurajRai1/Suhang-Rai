@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function Music() {
   return (
-    <section className="py-24 px-6 md:px-12 bg-zinc-950 text-white relative border-t border-zinc-900" id="music">
+    <section className="py-24 px-6 md:px-12 bg-zinc-950 text-white relative overflow-hidden border-t border-zinc-900" id="music">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none" />
 

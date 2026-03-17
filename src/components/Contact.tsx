@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Mail, ArrowRight, Instagram, Twitter, Linkedin, Github } from "lucide-react";
+import { Mail, ArrowRight, Instagram, Twitter, Linkedin, Github, Facebook } from "lucide-react";
 
 export function Contact() {
   return (
-    <section className="py-24 px-6 md:px-12 bg-zinc-950 text-white relative border-t border-zinc-900" id="contact">
+    <section className="py-24 px-6 md:px-12 bg-zinc-950 text-white relative overflow-hidden border-t border-zinc-900" id="contact">
       {/* Dynamic Background Noise/Gradient */}
       <div className="absolute top-0 right-1/4 w-[300px] h-[300px] bg-blue-600/10 blur-[100px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
@@ -60,12 +60,12 @@ export function Contact() {
 
         {/* Footer/Socials */}
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-zinc-800/50 text-zinc-500 text-sm">
-          <p>© {new Date().getFullYear()} Suhang Rai. Master of None.</p>
+          <p>© {new Date().getFullYear()} Suhang Rai. AI Synthesizer.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-fuchsia-400 transition-colors"><Twitter size={20} /></a>
-            <a href="#" className="hover:text-fuchsia-400 transition-colors"><Instagram size={20} /></a>
-            <a href="#" className="hover:text-fuchsia-400 transition-colors"><Github size={20} /></a>
-            <a href="#" className="hover:text-fuchsia-400 transition-colors"><Linkedin size={20} /></a>
+            <a href="https://x.com/SurajRai2327" target="_blank" rel="noopener noreferrer" className="hover:text-fuchsia-400 transition-colors"><Twitter size={20} /></a>
+            <a href="https://www.instagram.com/rai_suhang37/" target="_blank" rel="noopener noreferrer" className="hover:text-fuchsia-400 transition-colors"><Instagram size={20} /></a>
+            <a href="https://www.facebook.com/profile.php?id=61587625420756" target="_blank" rel="noopener noreferrer" className="hover:text-fuchsia-400 transition-colors"><Facebook size={20} /></a>
+            <a href="https://github.com/SurajRai1" target="_blank" rel="noopener noreferrer" className="hover:text-fuchsia-400 transition-colors"><Github size={20} /></a>
           </div>
         </div>
       </div>

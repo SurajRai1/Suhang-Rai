@@ -7,7 +7,7 @@ import { ParticleTrails } from "@/components/ParticleTrails";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-zinc-950 text-white font-sans selection:bg-fuchsia-500/30">
+    <main className="min-h-screen bg-zinc-950 text-white font-sans selection:bg-fuchsia-500/30 overflow-x-hidden">
       <ParticleTrails />
       <Hero />
       <About />

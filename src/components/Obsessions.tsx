@@ -31,7 +31,10 @@ const obsessions = [
 
 export function Obsessions() {
   return (
-    <section className="py-24 px-6 md:px-12 bg-zinc-950 text-white relative" id="obsessions">
+    <section className="py-24 px-6 md:px-12 bg-zinc-950 text-white relative overflow-hidden border-t border-zinc-900" id="obsessions">
+      
+      {/* Background effects */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-orange-600/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
           <motion.div

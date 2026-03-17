@@ -7,7 +7,7 @@ import { Code2, Music, Palette, Cpu, Lightbulb, Keyboard } from "lucide-react";
 
 export function About() {
   return (
-    <section className="py-24 px-6 md:px-12 bg-zinc-950 relative overflow-hidden text-white" id="about">
+    <section className="py-24 px-6 md:px-12 bg-zinc-950 text-white relative overflow-hidden border-t border-zinc-900" id="about">
       {/* Dynamic Background Noise/Gradient */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/10 blur-[100px] lg:blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-fuchsia-600/10 blur-[100px] lg:blur-[150px] rounded-full pointer-events-none" />
