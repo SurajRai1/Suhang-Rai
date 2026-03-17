@@ -38,12 +38,12 @@ export function Hero() {
       <motion.div 
         animate={chaosMode ? { scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] } : {}}
         transition={{ duration: 1, repeat: Infinity }}
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] ${chaosMode ? 'bg-red-600/40' : 'bg-fuchsia-600/20'} blur-[120px] rounded-full pointer-events-none transition-colors`} 
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[800px] ${chaosMode ? 'bg-red-600/40' : 'bg-fuchsia-600/20'} blur-[80px] md:blur-[120px] rounded-full pointer-events-none transition-colors`} 
       />
       <motion.div 
         animate={chaosMode ? { scale: [1, 2, 1], rotate: [0, 180, 360] } : {}}
         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-        className={`absolute top-1/2 left-1/2 translate-x-1/4 -translate-y-1/4 w-[600px] h-[600px] ${chaosMode ? 'bg-orange-600/40' : 'bg-blue-600/20'} blur-[120px] rounded-full pointer-events-none transition-colors`} 
+        className={`absolute top-1/2 left-1/2 translate-x-1/4 -translate-y-1/4 w-[250px] md:w-[600px] h-[250px] md:h-[600px] ${chaosMode ? 'bg-orange-600/40' : 'bg-blue-600/20'} blur-[80px] md:blur-[120px] rounded-full pointer-events-none transition-colors`} 
       />
 
       {/* Floating Elements */}
@@ -57,7 +57,7 @@ export function Hero() {
           rotate: chaosMode ? [0, 180, 360] : [0, 5, 0] 
         }} 
         transition={{ duration: chaosMode ? 0.5 : 4, repeat: Infinity, ease: chaosMode ? "linear" : "easeInOut" }} 
-        className={`absolute top-1/4 left-1/4 cursor-grab active:cursor-grabbing ${chaosMode ? 'text-red-500' : 'text-zinc-800'}`}
+        className={`hidden md:block absolute top-1/4 left-1/4 cursor-grab active:cursor-grabbing ${chaosMode ? 'text-red-500' : 'text-zinc-800'}`}
       >
         <Music size={64} />
       </motion.div>
@@ -71,7 +71,7 @@ export function Hero() {
           rotate: chaosMode ? [0, -180, -360] : [0, -10, 0] 
         }} 
         transition={{ duration: chaosMode ? 0.7 : 5, repeat: Infinity, ease: chaosMode ? "linear" : "easeInOut", delay: chaosMode ? 0 : 1 }} 
-        className={`absolute bottom-1/4 right-1/4 cursor-grab active:cursor-grabbing ${chaosMode ? 'text-orange-500' : 'text-zinc-800'}`}
+        className={`hidden md:block absolute bottom-1/4 right-1/4 cursor-grab active:cursor-grabbing ${chaosMode ? 'text-orange-500' : 'text-zinc-800'}`}
       >
         <Code size={64} />
       </motion.div>

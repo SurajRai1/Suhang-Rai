@@ -113,8 +113,7 @@ export function ParticleTrails() {
 
     const animate = () => {
       if (!ctx || !canvas) return;
-      ctx.fillStyle = 'rgba(9, 9, 11, 0.1)'; // matching zinc-950 for trailing effect
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       handleParticles();
       hue += 2;
       animationFrameId = requestAnimationFrame(animate);

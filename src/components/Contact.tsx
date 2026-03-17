@@ -48,11 +48,11 @@ export function Contact() {
           transition={{ delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-24"
         >
-          <Button size="lg" className="bg-white text-black hover:bg-zinc-200 rounded-full px-8 h-14 text-lg">
+          <Button size="lg" className="w-full sm:w-auto bg-white text-black hover:bg-zinc-200 rounded-full px-8 h-14 text-lg">
             <Mail className="mr-2 h-5 w-5" />
             Say Hello
           </Button>
-          <Button size="lg" variant="ghost" className="rounded-full px-8 h-14 text-lg text-zinc-300 hover:text-white hover:bg-white/10 group">
+          <Button size="lg" variant="ghost" className="w-full sm:w-auto rounded-full px-8 h-14 text-lg text-zinc-300 hover:text-white hover:bg-white/10 group">
             Book a call
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
