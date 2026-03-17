@@ -122,15 +122,15 @@ export function Hero() {
         </motion.p>
 
         <motion.div 
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row w-full sm:w-auto items-center justify-center gap-4 px-4"
         >
-          <Button size="lg" className={`${chaosMode ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-white text-black hover:bg-zinc-200'} rounded-full px-8 transition-colors`}>
+          <Button size="lg" className={`w-full sm:w-auto ${chaosMode ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-white text-black hover:bg-zinc-200'} rounded-full px-8 transition-colors`}>
             Explore My Mind
           </Button>
           <Button onClick={() => {
             const section = document.getElementById("music");
             section?.scrollIntoView({ behavior: "smooth" });
-          }} size="lg" variant="outline" className={`rounded-full px-8 border-white/20 hover:bg-white/10 transition-colors ${chaosMode ? 'text-red-300' : 'text-white'}`}>
+          }} size="lg" variant="outline" className={`w-full sm:w-auto rounded-full px-8 border-white/20 hover:bg-white/10 transition-colors ${chaosMode ? 'text-red-300' : 'text-white'}`}>
             <Music className="mr-2 h-4 w-4" />
             Listen to Music
           </Button>
