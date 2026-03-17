@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Code, Music, Palette, Terminal, Zap } from "lucide-react";
+import { ArrowDown, Code, Music, Palette, Terminal, Zap, Flame } from "lucide-react";
 
 const roles = [
   "Musician",
@@ -16,48 +16,81 @@ const roles = [
 
 export function Hero() {
   const [currentRole, setCurrentRole] = useState(0);
+  const [chaosMode, setChaosMode] = useState(false);
 
   useEffect(() => {
+    // Faster text rotation in chaos mode
+    const speed = chaosMode ? 600 : 2000;
     const interval = setInterval(() => {
       setCurrentRole((prev) => (prev + 1) % roles.length);
-    }, 2000);
+    }, speed);
     return () => clearInterval(interval);
-  }, []);
+  }, [chaosMode]);
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-zinc-950 text-white selection:bg-fuchsia-500/30">
+    <motion.div 
+      animate={chaosMode ? { filter: ["hue-rotate(0deg)", "hue-rotate(90deg)", "hue-rotate(0deg)"] } : {}}
+      transition={{ duration: 2, repeat: Infinity }}
+      className={`relative min-h-screen flex flex-col items-center justify-center overflow-hidden transition-colors duration-500 ${chaosMode ? 'bg-black text-red-100' : 'bg-zinc-950 text-white selection:bg-fuchsia-500/30'}`}
+    >
       
       {/* Background gradients */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-fuchsia-600/20 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 translate-x-1/4 -translate-y-1/4 w-[600px] h-[600px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
+      <motion.div 
+        animate={chaosMode ? { scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] } : {}}
+        transition={{ duration: 1, repeat: Infinity }}
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] ${chaosMode ? 'bg-red-600/40' : 'bg-fuchsia-600/20'} blur-[120px] rounded-full pointer-events-none transition-colors`} 
+      />
+      <motion.div 
+        animate={chaosMode ? { scale: [1, 2, 1], rotate: [0, 180, 360] } : {}}
+        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+        className={`absolute top-1/2 left-1/2 translate-x-1/4 -translate-y-1/4 w-[600px] h-[600px] ${chaosMode ? 'bg-orange-600/40' : 'bg-blue-600/20'} blur-[120px] rounded-full pointer-events-none transition-colors`} 
+      />
 
-      {/* Floating Elements (Representing ADHD/Multiple Interests) */}
-      <motion.div animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-1/4 left-1/4 text-zinc-800">
-        <Music size={48} />
+      {/* Floating Elements */}
+      <motion.div 
+        drag
+        dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
+        whileDrag={{ scale: 1.2, rotate: 90 }}
+        animate={{ 
+          y: chaosMode ? [-50, 50, -50] : [0, -20, 0], 
+          x: chaosMode ? [-50, 50, -50] : [0, 0, 0],
+          rotate: chaosMode ? [0, 180, 360] : [0, 5, 0] 
+        }} 
+        transition={{ duration: chaosMode ? 0.5 : 4, repeat: Infinity, ease: chaosMode ? "linear" : "easeInOut" }} 
+        className={`absolute top-1/4 left-1/4 cursor-grab active:cursor-grabbing ${chaosMode ? 'text-red-500' : 'text-zinc-800'}`}
+      >
+        <Music size={64} />
       </motion.div>
-      <motion.div animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute bottom-1/4 right-1/4 text-zinc-800">
-        <Code size={48} />
-      </motion.div>
-      <motion.div animate={{ y: [0, -15, 0], x: [0, 10, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }} className="absolute top-1/3 right-1/3 text-zinc-800">
-        <Palette size={48} />
+
+      <motion.div 
+        drag
+        dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
+        animate={{ 
+          y: chaosMode ? [50, -50, 50] : [0, 20, 0], 
+          x: chaosMode ? [50, -50, 50] : [0, 0, 0],
+          rotate: chaosMode ? [0, -180, -360] : [0, -10, 0] 
+        }} 
+        transition={{ duration: chaosMode ? 0.7 : 5, repeat: Infinity, ease: chaosMode ? "linear" : "easeInOut", delay: chaosMode ? 0 : 1 }} 
+        className={`absolute bottom-1/4 right-1/4 cursor-grab active:cursor-grabbing ${chaosMode ? 'text-orange-500' : 'text-zinc-800'}`}
+      >
+        <Code size={64} />
       </motion.div>
 
       <div className="z-10 text-center px-4 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm font-medium"
+        <motion.button
+          onClick={() => setChaosMode(!chaosMode)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className={`mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 backdrop-blur-md text-sm font-bold shadow-xl transition-all ${chaosMode ? 'bg-red-500/20 text-red-400 border-red-500/50 hover:bg-red-500/30' : 'bg-white/5 hover:bg-white/10'}`}
         >
-          <Zap size={14} className="text-fuchsia-400" />
-          <span>Curiosity Driven</span>
-        </motion.div>
+          {chaosMode ? <Flame size={16} className="animate-pulse" /> : <Zap size={16} className="text-fuchsia-400" />}
+          <span>{chaosMode ? "TURN IT OFF" : "Curiosity Driven"}</span>
+        </motion.button>
 
         <motion.h1 
           className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          animate={chaosMode ? { x: [-2, 2, -2], y: [1, -1, 1] } : {}}
+          transition={{ duration: 0.1, repeat: Infinity, repeatType: "mirror" }}
         >
           Hi, I&apos;m Suhang Rai. <br />
           <span className="text-zinc-400">I am a </span>
@@ -66,14 +99,14 @@ export function Hero() {
             {roles.map((role, idx) => (
               <motion.span
                 key={role}
-                className="[grid-area:stack] bg-gradient-to-r from-fuchsia-400 to-blue-400 bg-clip-text text-transparent origin-bottom-left"
+                className={`[grid-area:stack] bg-clip-text text-transparent origin-bottom-left ${chaosMode ? 'bg-gradient-to-r from-red-500 to-orange-500' : 'bg-gradient-to-r from-fuchsia-400 to-blue-400'}`}
                 initial={{ opacity: 0, y: 50, rotateX: -90 }}
                 animate={{
                   opacity: currentRole === idx ? 1 : 0,
-                  y: currentRole === idx ? 0 : -50,
+                  y: currentRole === idx ? 0 : (chaosMode ? -100 : -50),
                   rotateX: currentRole === idx ? 0 : 90,
                 }}
-                transition={{ duration: 0.5, ease: "circOut" }}
+                transition={{ duration: chaosMode ? 0.2 : 0.5, ease: "circOut" }}
               >
                 {role}
               </motion.span>
@@ -83,37 +116,35 @@ export function Hero() {
 
         <motion.p 
           className="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          animate={chaosMode ? { fontStyle: "italic", color: "#f87171" } : {}}
         >
           Curiosity is my main thing. I love building things—whether it&apos;s music, websites, or apps. Often told I&apos;m a master of none, but frequently proving I&apos;m better than one.
         </motion.p>
 
         <motion.div 
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <Button size="lg" className="bg-white text-black hover:bg-zinc-200 rounded-full px-8">
+          <Button size="lg" className={`${chaosMode ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-white text-black hover:bg-zinc-200'} rounded-full px-8 transition-colors`}>
             Explore My Mind
           </Button>
-          <Button size="lg" variant="outline" className="rounded-full px-8 border-white/20 hover:bg-white/10 text-white">
-            <Terminal className="mr-2 h-4 w-4" />
-            View Projects
+          <Button onClick={() => {
+            const section = document.getElementById("music");
+            section?.scrollIntoView({ behavior: "smooth" });
+          }} size="lg" variant="outline" className={`rounded-full px-8 border-white/20 hover:bg-white/10 transition-colors ${chaosMode ? 'text-red-300' : 'text-white'}`}>
+            <Music className="mr-2 h-4 w-4" />
+            Listen to Music
           </Button>
         </motion.div>
       </div>
 
       <motion.div 
         className="absolute bottom-10 left-1/2 -translate-x-1/2 text-zinc-500 flex flex-col items-center"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ y: chaosMode ? [0, 50, 0] : [0, 10, 0] }}
+        transition={{ duration: chaosMode ? 0.5 : 2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <span className="text-xs uppercase tracking-widest mb-2">Scroll</span>
+        <span className="text-xs uppercase tracking-widest mb-2 font-bold">{chaosMode ? "SCROLL FAST" : "Scroll"}</span>
         <ArrowDown size={16} />
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
