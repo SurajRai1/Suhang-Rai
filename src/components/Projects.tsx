@@ -5,8 +5,26 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
 
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  type: string;
+  color: string;
+  link?: string;
+  github?: string;
+}
+
 // Dummy data highlighting the mixed-discipline approach
-const projects = [
+const projects: Project[] = [
+  {
+    title: "Formcreft AI",
+    description: "An AI-powered SaaS business for intelligent form generation. Currently in active development and launching soon.",
+    tags: ["Next.js", "Supabase", "AI", "SaaS"],
+    type: "SaaS Business",
+    color: "from-indigo-500/20 to-zinc-900/50",
+    link: "https://vercel.com/suraj-rais-projects/formcreft.ai/4vgBUMgwcuQxRnFxU4Jb5LvHsQd7",
+  },
   {
     title: "PolyRhythm AI",
     description: "An AI tool that generates complex polyrhythmic drum patterns for music production.",
@@ -92,8 +110,18 @@ export function Projects() {
                       {project.type}
                     </Badge>
                     <div className="flex gap-3 text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Github size={20} className="hover:text-white transition-colors" />
-                      <ExternalLink size={20} className="hover:text-white transition-colors" />
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                          <Github size={20} />
+                        </a>
+                      )}
+                      {project.link ? (
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                          <ExternalLink size={20} />
+                        </a>
+                      ) : (
+                        <ExternalLink size={20} className="hover:text-white transition-colors" />
+                      )}
                     </div>
                   </div>
                   <h3 className="text-2xl font-bold text-white group-hover:text-fuchsia-100 transition-colors">
