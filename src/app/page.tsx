@@ -12,8 +12,8 @@ export default function Home() {
       <ParticleTrails />
       <Hero />
       <About />
-      <Projects />
       <Music />
+      <Projects />
       <Obsessions />
       <Contact />
     </main>
