@@ -4,6 +4,7 @@ import { Music } from "@/components/Music";
 import { Obsessions } from "@/components/Obsessions";
 import { Contact } from "@/components/Contact";
 import { ParticleTrails } from "@/components/ParticleTrails";
+import { Projects } from "@/components/Projects";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <ParticleTrails />
       <Hero />
       <About />
+      <Projects />
       <Music />
       <Obsessions />
       <Contact />

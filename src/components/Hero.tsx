@@ -124,8 +124,11 @@ export function Hero() {
         <motion.div 
           className="flex flex-col sm:flex-row w-full sm:w-auto items-center justify-center gap-4 px-4"
         >
-          <Button size="lg" className={`w-full sm:w-auto ${chaosMode ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-white text-black hover:bg-zinc-200'} rounded-full px-8 transition-colors`}>
-            Explore My Mind
+          <Button onClick={() => {
+            const section = document.getElementById("projects");
+            section?.scrollIntoView({ behavior: "smooth" });
+          }} size="lg" className={`w-full sm:w-auto ${chaosMode ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-white text-black hover:bg-zinc-200'} rounded-full px-8 transition-colors`}>
+            View Selected Works
           </Button>
           <Button onClick={() => {
             const section = document.getElementById("music");
